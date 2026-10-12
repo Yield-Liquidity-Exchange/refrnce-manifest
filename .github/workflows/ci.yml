@@ -1,0 +1,53 @@
+name: CI
+
+# Unit tests make no network calls. The last step runs the built command against the demo record on a real
+# Solana endpoint; it runs only once examples/demo-envelope.json exists.
+#
+# The open-items step may not fail quietly, on purpose: while an open item is left in the repository
+# (`npm run todos` lists them), this workflow fails, and that is the signal that it is not ready to be public.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Pinned by commit; the tag is what the commit was when this was written.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Type check
+        run: bun run typecheck
+
+      - name: No import reaches outside the package
+        run: bun run boundary
+
+      - name: Dependency graph
+        run: bun run deps
+
+      - name: Unit tests
+        run: bun run test
+
+      - name: Build
+        run: bun run build
+
+      - name: Open items (must print nothing)
+        run: bun run todos
+
+      - name: Verify the demo record
+        if: hashFiles('examples/demo-envelope.json') != ''
+        run: bun run verify:demo

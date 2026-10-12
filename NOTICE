@@ -1,0 +1,9 @@
+Trace Manifest Verifier
+Copyright 2026 TODO(copyright-holder): the name of the copyright holder, to be confirmed before this repository is made public
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The files src/solana/idl/jupiter-v6.idl.json and src/solana/idl/jupiter-v6-onchain.idl.json are
+interface descriptions published by Jupiter, included unchanged as data. They are not part of the
+original work of this package and are not covered by its copyright notice above. Their provenance
+is recorded in src/solana/idl/README.md.

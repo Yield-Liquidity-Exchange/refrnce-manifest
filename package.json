@@ -1,0 +1,51 @@
+{
+  "name": "trace-manifest-verifier",
+  "version": "0.1.0",
+  "description": "Independent verifier for Trace Manifest records: checks a record's hash, signature, Solana anchor and claims against the chain.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "trace-verify": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./schema": "./schema/trace-manifest-1.0.schema.json"
+  },
+  "files": [
+    "dist",
+    "schema",
+    "examples",
+    "LICENSE",
+    "NOTICE",
+    "README.md"
+  ],
+  "scripts": {
+    "prebuild": "node tools/check-boundary.mjs",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "boundary": "node tools/check-boundary.mjs",
+    "deps": "node tools/dependency-report.mjs",
+    "todos": "node tools/list-todos.mjs",
+    "verify:demo": "node tools/verify-demo.mjs"
+  },
+  "dependencies": {
+    "@noble/ed25519": "3.2.0",
+    "canonicalize": "5.1.0",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.17",
+    "typescript": "5.9.3",
+    "vitest": "4.1.8"
+  }
+}

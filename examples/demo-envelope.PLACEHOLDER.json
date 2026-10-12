@@ -1,0 +1,4 @@
+{
+  "placeholder": true,
+  "todo": "TODO(demo-record): this is NOT a record. Replace this file with examples/demo-envelope.json, the demo record anchored on Solana mainnet, once it has been issued. Until then the package ships no example record."
+}

@@ -1,0 +1,16 @@
+{
+  "keys": [
+    {
+      "key_id": "trace-dev-20261006-7vvxcq",
+      "public_key": "7VVxCQwstzViBpPFr4m7zMQcie6A1pJaZSuD5ekhSLj6",
+      "valid_from": "2026-10-06T00:00:00.000Z",
+      "status": "active"
+    },
+    {
+      "key_id": "trace-prd-20261006-cqxydk",
+      "public_key": "CQxYDKZNCQQ52oeiDkcAQYjak8UekSKsTeNzMTdyH6Nq",
+      "valid_from": "2026-10-06T00:00:00.000Z",
+      "status": "active"
+    }
+  ]
+}

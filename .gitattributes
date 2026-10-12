@@ -1,0 +1,5 @@
+# Byte-stable data files: a line-ending change would alter a hash or a pinned checksum.
+*.idl.json -text
+src/manifest/issuer-keys.json -text
+schema/*.json -text
+LICENSE -text

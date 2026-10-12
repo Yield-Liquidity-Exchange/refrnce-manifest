@@ -1,0 +1,5 @@
+dist
+node_modules
+*.idl.json
+schema/*.json
+src/manifest/issuer-keys.json
